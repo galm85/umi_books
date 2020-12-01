@@ -16,7 +16,17 @@ class BookController extends Controller
     }
 
     public function store(){
+        if(
+            (request('book_name') ==null)||
+            (request('books_number')==null) ||
+            (request('pages_number')==null) ||
+            (request('spine')==null)
+            ){
+           return redirect('/');
+        };
+
         $book = new Book();
+
 
         $book->book_name = request('book_name');
         $book->books_number = request('books_number');
@@ -30,7 +40,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect('/');
+        return ;
 
     }
 

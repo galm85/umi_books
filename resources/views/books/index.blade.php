@@ -39,9 +39,17 @@
 
                 <tbody>
                     @foreach ($books as $key=>$book)
-                        <tr class=" {{$book->copies_number > $book->books_printed ? '':'bg-success'}} text-center"  >
-                            <td>{{$key+1}}</td>
-                            <td>{{$book->book_name}}</td>
+                        <tr class=" {{$book->copies_number > $book->books_printed ? '':'bg-success'}} text-center">
+                                <td>{{$key+1}}</td>
+
+
+                            @if ($book->books_printed>1 && $book->books_printed < $book->copies_number ){
+                                <td>{{$book->book_name}} <span class="text-danger" style="font-size:1.5rem;"> * </span></td>
+                            }@else{
+                                <td>{{$book->book_name}}</td>
+                            }
+                            @endif
+
                             <td>{{$book->books_number}}</td>
                             <td>{{$book->pages_number}}</td>
                             <td style="font-size:1.2rem;text-decoration: underline;;"><b>{{$book->copies_number}}</b></td>
@@ -58,7 +66,8 @@
                                 <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
 
                             </form>
-                            </td>
+
+
                         </tr>
 
                     @endforeach
