@@ -45,10 +45,10 @@ class BookController extends Controller
         $book->book_name = request('book_name');
         $book->books_number = request('books_number');
         $book->pages_number = request('pages_number');
-        $book->copies_number = request('books_number')/4;
+        $book->copies_number = ceil(request('books_number')/4);
         $book->total_pages_to_print = ceil((request('books_number')/4)*(request('pages_number')/2));
         $book->books_printed = request('books_printed');
-        $book->covers_number = request('books_number')/2;
+        $book->covers_number = ceil(request('books_number')/2);
         $book->covers_printed = 0;
         $book->spine = request('spine');
 
