@@ -7,7 +7,7 @@ use App\Book;
 class BookController extends Controller
 {
     public function index(){
-        $books = Book::all();
+        $books = Book::orderBy('created_at','asc')->get();
         return view('books.index',['books'=>$books]);
     }
 
