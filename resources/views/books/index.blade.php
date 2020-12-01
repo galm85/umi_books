@@ -39,15 +39,15 @@
 
                 <tbody>
                     @foreach ($books as $key=>$book)
-                        <tr class=" {{$book->copies_number > $book->books_printed ? '':'bg-success'}} text-center">
-                                <td>{{$key+1}}</td>
+                        <tr class="{{$book->copies_number > $book->books_printed ? '':'bg-success'}} text-center">
 
+                            <td>{{$key+1}}</td>
 
-                            @if ($book->books_printed>1 && $book->books_printed < $book->copies_number ){
+                            @if ($book->books_printed>1 && $book->books_printed < $book->copies_number )
                                 <td>{{$book->book_name}} <span class="text-danger" style="font-size:1.5rem;"> * </span></td>
-                            }@else{
+                            @else
                                 <td>{{$book->book_name}}</td>
-                            }
+
                             @endif
 
                             <td>{{$book->books_number}}</td>
